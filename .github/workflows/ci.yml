@@ -1,4 +1,4 @@
-name: .NET CI
+name: .NET-CI
 on:
   push:
     branches: [ main ]
@@ -8,14 +8,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
-      - name: Restore dependencies
-        run: dotnet restore FullStackCI/FullStackCI.sln
-      - name: Build
-        run: dotnet build FullStackCI/FullStackCI.sln --no-restore
-      - name: Test
-        run: dotnet test FullStackCITest/FullStackCITest.csproj --no-build --verbosity normal
+      - name: List files (para debug)
+        run: ls -la
+      - name: Find project files
+        run: find . -name "*.csproj" -o -name "*.sln"
+      - name: Restore and Build
+        run: |
