@@ -16,6 +16,6 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build ./FullStackCI --no-restore
+        run: dotnet build ./FullStackCI/FullStackCI.sln --no-restore
       - name: Test
-        run: dotnet test ./FullStackCITest --no-build --verbosity normal
+        run: dotnet test ./FullStackCITest/FullStackCITest.sln --no-build --verbosity normal
